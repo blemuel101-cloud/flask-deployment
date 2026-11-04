@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/AT3.png">
+    <title>PresenceSync</title>
+
+    <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ url_for('static', filename='Styles.css') }}">    
+    
+
+
+
+
+</head>
+
+<body class="bg-light">
+  <div class="bubble-container">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow p-4 w-100" style="max-width: 500px;">
+        <h2 class="text-center mb-4">PresenceSync</h2>
+
+        <form action='/submit' method="POST">
+            <div class="mb-3">
+                <label for="ID" class="form-label" >Student ID</label>
+                <input type="text" maxlength="4" name = "ID" class="form-control" id="ID" placeholder="🔒Enter Student ID"  required >
+            </div>
+
+            <div class="mb-3">
+                <label for="code" class="form-label">Class Code</label>
+                <input type="text" maxlength="4" name = "code" class="form-control" id="code" placeholder="🔑Enter Code" required>
+            </div>
+
+           
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Submit Attendance</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+                
+            </div>
+
+             
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role ="alert" style="margin-top:10px;font-weight:bold">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+
+
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

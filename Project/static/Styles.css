@@ -1,0 +1,39 @@
+.bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* So they don’t block clicks */
+  overflow: hidden;
+  z-index: 0; /* Behind your form */
+}
+
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 20px;
+  height: 20px;
+  background: rgba(173, 216, 230, 0.6);
+  border-radius: 50%;
+  animation: float 10s linear infinite;
+}
+
+.color{
+  background-color:  #0000FF;
+}
+
+/* randomize size & speed */
+.bubble:nth-child(1) { left: 10%; width: 15px; height: 15px; animation-duration: 8s; }
+.bubble:nth-child(2) { left: 50%; width: 25px; height: 25px; animation-duration: 12s; }
+.bubble:nth-child(3) { left: 80%; width: 20px; height: 20px; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 25%; width: 18px; height: 18px; animation-duration: 9s; }
+.bubble:nth-child(5) { left: 65%; width: 22px; height: 22px; animation-duration: 11s; }
+.bubble:nth-child(6) { left: 90%; width: 16px; height: 16px; animation-duration: 7s; }
+
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  50% { transform: translateY(-50vh) translateX(20px); opacity: 0.7; }
+  100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
+}

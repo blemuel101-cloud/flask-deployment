@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5">
+
+    <link rel="icon" type="image/x-icon" href="/static/AT3.png">
+    <title>PresenceSync</title>
+
+    <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ url_for('static', filename='Styles.css') }}">    
+    
+
+
+
+
+</head>
+
+<body class="bg-light">
+  <div class="bubble-container">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<h2 style="text-align: center; margin-top: 65px;">Teacher Dashboard</h2>
+
+
+
+<!-- Parent wrapper starts here -->
+<div class="d-flex justify-content-center align-items-start mt-5 px-3">
+ 
+  <!-- Left Card -->
+  <div class="card shadow p-4 w-100" style="max-width: 500px;">
+    <h5 class="text-start mb-4">Generate Code</h5>
+    
+  
+          <div class="alert alert-{{ category }}" role="alert" style="margin-top:10px; font-weight:bold; text-align: center; font-size: xx-large;">
+            <p class="alert alert-success">{{ code }}</p>
+          </div>
+      
+
+    <form action="/button-code" method="POST">
+      <button type="submit" name="gencode" class="btn btn-primary w-100" style="margin-top: 5px;">Generate Code</button>
+      <button type="submit" name = "genlate" class="btn btn-primary w-100" style="margin-top: 5px;">Submit Attendance </button>
+    </form>
+  </div> 
+
+
+ 
+   
+</div> <!-- Parent wrapper ends here -->
+
+
+ 
+
+
+
+
+<div style="display: flex; justify-content: center;">
+<hr class='mt-5' style="border: 1px solid #333; width: 95%; opacity: 0.1; ">
+</div>
+<h4 class="ms-5">Today's Attendance</h4>
+{% for student in names %}
+    {% if student.status == "late" %}
+        <p style="font-weight: bold; font-size: 15px; margin-left: 50px; width:fit-content; white-space:nowrap" class="alert alert-warning">{{ student.name }}</p>
+    {% else %}
+        <p class="alert alert-success">{{ student.name }}</p>
+    {% endif %}
+{% endfor %}
+
+
+</body>
+</html>
+
+
+<!-- I need to use diffrent elements -->
+ <!-- Seperate the the containers -->
